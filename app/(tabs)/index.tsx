@@ -1,13 +1,18 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import "../global.css"
-import { FlatList, Pressable, Text, View, Image, TouchableOpacity } from "react-native";
-import { offers, images } from "@/constants";
+import { FlatList, Button, Pressable, Text, View, Image, TouchableOpacity } from "react-native";
 import { Fragment } from "react";
 import cn from "clsx";
+import * as Sentry from "@sentry/react-native";
+
 import CartButton from "@/components/CartButton";
+import { offers, images } from "@/constants";
+import "../global.css"
+import useAuthStore from "@/store/auth.store";
 // import { Image } from "expo-image";
  
 export default function Index() {
+  const { user } = useAuthStore();
+  
   return (
     <SafeAreaView className="flex-1 bg-white">
 
@@ -58,6 +63,7 @@ export default function Index() {
 
         }}
         contentContainerClassName="pb-28 px-5"
+        ListFooterComponent={() => <Button title='Try!' onPress={ () => { Sentry.captureException(new Error('First error')) }}/>}
       />
     </SafeAreaView>
   );
