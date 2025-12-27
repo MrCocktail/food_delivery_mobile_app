@@ -9,7 +9,9 @@ import cn from 'clsx'
 
 import CartButton from '@/components/CartButton'
 import MenuCard from '@/components/MenuCard'
-import { MenuItem } from '@/type'
+import { MenuItem, Category } from '@/type'
+import SearchBar from '@/components/SearchBar'
+import Filter from '@/components/Filter'
 
 const search = () => {
   const { category, query } = useLocalSearchParams<{ category: string, query: string}>()
@@ -53,8 +55,10 @@ const search = () => {
             </View>
             <CartButton /> 
           </View>
-          <Text>Search Input</Text>
-          <Text>Filter</Text>
+
+          <SearchBar />
+
+          <Filter categories={categories!} /> 
         </View>
       )}  
       ListEmptyComponent={() => !loading && <Text>No results</Text>}

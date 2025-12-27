@@ -5,8 +5,6 @@ import { appwriteConfig } from '@/lib/appwrite'
 
 const MenuCard = ({ item: { name, price, image_url }} : { item: MenuItem }) => {
     const imageUrl = `${image_url}?project=${appwriteConfig.projectId}`
-    console.log('url: ', image_url);
-    // console.log('Url: ', imageUrl);
     
   return (
     <TouchableOpacity className='menu-card' style={Platform.OS === 'android' ? {elevation: 10, shadowColor: '#878787'} : {}}>

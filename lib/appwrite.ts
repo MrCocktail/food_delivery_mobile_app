@@ -1,4 +1,4 @@
-import { CreateUserParams, SignInParams, GetMenuParams } from "@/type";
+import { CreateUserParams, SignInParams, GetMenuParams, Category } from "@/type";
 import {
   Account,
   Avatars,
@@ -132,12 +132,14 @@ export const getMenu = async ({ category, query } : GetMenuParams) => {
   }
 }
 
-export const getCategories = async () => {
+export const getCategories = async (): Promise<Category[]> => {
   try {
     const result = await tablesDB.listRows({
       databaseId: appwriteConfig.databaseId,
       tableId: appwriteConfig.categoriesTableId,
     }); 
+
+    return result.rows as unknown as Category[]
   } catch (error) {
     throw new Error((error as Error).message);
   }
