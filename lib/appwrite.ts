@@ -1,11 +1,12 @@
-import { CreateUserParams, SignInParams } from "@/type";
+import { CreateUserParams, SignInParams, GetMenuParams } from "@/type";
 import {
   Account,
   Avatars,
   Client,
   TablesDB,
   ID,
-  Query
+  Query,
+  Storage
 } from "react-native-appwrite";
 
 export const appwriteConfig = {
@@ -13,7 +14,12 @@ export const appwriteConfig = {
   projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID!,
   platform: "com.dave.foodordering",
   databaseId: process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID!,
+  bucketId: process.env.EXPO_PUBLIC_APPWRITE_BUCKET_ID!,
   usersTableId: process.env.EXPO_PUBLIC_APPWRITE_USERS_TABLE_ID!,
+  categoriesTableId: process.env.EXPO_PUBLIC_APPWRITE_CATEGORIES_TABLE_ID!,
+  menuTableId: process.env.EXPO_PUBLIC_APPWRITE_MENU_TABLE_ID!,
+  customizationTableId: process.env.EXPO_PUBLIC_APPWRITE_CUSTOMIZATION_TABLE_ID!,
+  menuCustomizationTableId: process.env.EXPO_PUBLIC_APPWRITE_MENU_CUSTOMIZATION_TABLE_ID!,
 };
 
 export const client = new Client()
@@ -23,6 +29,7 @@ export const client = new Client()
 
 export const account = new Account(client);
 export const tablesDB = new TablesDB(client);
+export const storage = new Storage(client)
 export const avatars = new Avatars(client);
 
 export const createUser = async ({
@@ -101,3 +108,37 @@ export const getCurrentUser = async () => {
     throw error;
   }
 };
+
+export const getMenu = async ({ category, query } : GetMenuParams) => {
+  try {
+    const queries: string[] = []
+
+    if (category) {
+      queries.push(Query.equal("categories", category))
+    }
+
+    if (query) {
+      queries.push(Query.search("name", query))
+    }
+    const result = await tablesDB.listRows({
+      databaseId: appwriteConfig.databaseId,
+      tableId: appwriteConfig.menuTableId,
+      queries: queries,
+    });
+
+    return result.rows
+  } catch (error) {
+    throw new Error((error as Error).message);
+  }
+}
+
+export const getCategories = async () => {
+  try {
+    const result = await tablesDB.listRows({
+      databaseId: appwriteConfig.databaseId,
+      tableId: appwriteConfig.categoriesTableId,
+    }); 
+  } catch (error) {
+    throw new Error((error as Error).message);
+  }
+}
