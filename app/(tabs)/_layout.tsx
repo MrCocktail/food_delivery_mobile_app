@@ -5,21 +5,32 @@ import useAuthStore from '@/store/auth.store'
 import { TabBarIconProps } from '@/type'
 import { images } from '@/constants'
 import cn from 'clsx'
+import { useCartStore } from '@/store/cart.store'
 
 
-const TabBarIcon = ({ focused, icon, title } : TabBarIconProps) => (
-  <View className='tab-icon'> 
+
+const TabBarIcon = ({ focused, icon, title } : TabBarIconProps) => {
+  const { getTotalItems } = useCartStore();
+  const totalItems = getTotalItems();
+  return (
+  <View className='tab-icon '> 
     <Image 
       source={icon} 
       className={focused ? "size-8" : "size-7"} 
       resizeMode="contain" 
       tintColor={focused ? "#FE8C00" : "#5D5F6D"}
     />
+    {(title === 'Cart' && totalItems > 0) && (
+                  <View className='cart-badge right-3 -top-3'>
+                      <Text className='small-bold text-white'>{totalItems}</Text>
+                  </View>
+              )}
     <Text className={cn('text-sm font-bold', focused ? 'text-primary' : 'text-gray-200')}>
       {title}
     </Text>
   </View>
-)
+  )
+}
 export default function TabLayout() {
     const { isAuthenticated } = useAuthStore()
 

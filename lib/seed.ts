@@ -119,12 +119,11 @@ async function seed(): Promise<void> {
     }
 
     // 4. Create Menu Items
+    console.log('seed step 4');
     const menuMap: Record<string, string> = {};
     for (const item of data.menu) {
-        console.log('menu 1');
         
         const uploadedImage = await uploadImageToStorage(item.image_url);
-        console.log('menu 2');
 
         const doc = await databases.createRow(
             appwriteConfig.databaseId,
@@ -143,7 +142,6 @@ async function seed(): Promise<void> {
         );
 
         menuMap[item.name] = doc.$id;
-console.log('seed step 5');
 
         // 5. Create menu_customizations
         for (const cusName of item.customizations) {

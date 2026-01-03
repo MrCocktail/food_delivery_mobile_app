@@ -8,6 +8,7 @@ import CartButton from "@/components/CartButton";
 import { offers, images } from "@/constants";
 import "../global.css"
 import useAuthStore from "@/store/auth.store";
+import { router } from "expo-router";
 // import { Image } from "expo-image";
  
 export default function Index() {
@@ -24,7 +25,7 @@ export default function Index() {
             <View className="flex-start">
               <Text className="small-bold text-primary">DELIVER TO</Text>
               <TouchableOpacity className="flex-center flex-row gap-x-1 mt-0.5">
-              <Text className="paragraph-bold text-dark-100">Haiti</Text>
+              <Text className="paragraph-bold text-dark-100">Delmas</Text>
               <Image 
               source={images.arrowDown} className="size-3" resizeMode="contain" 
               />
@@ -41,6 +42,10 @@ export default function Index() {
               className={cn("offer-card", isEven ? "flex-row-reverse" : "flex-row")} 
               style={{ backgroundColor: item.color }}
               android_ripple={{ color: '#fffff22'}}
+              onPress={() => router.push({
+                "pathname": "/search",
+                params: { query: item.title },
+              })}
               >
                 {({pressed}) => (
                   <Fragment> 

@@ -1,11 +1,15 @@
-import { View, Text } from 'react-native'
+import { View, Text, Button } from 'react-native'
 import React from 'react'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import seed from '@/lib/seed'
 
 const profile = () => {
   return (
-    <View>
-      <Text>profile</Text>
-    </View>
+    <SafeAreaView className='justify-center items-center h-full'>
+      <Text>Support the project for more features. </Text>
+      <Text>Mr. Cocktail</Text>
+      {/* <Button title="Click Me" onPress={() => { seed() .catch(console.error)}} /> */}
+    </SafeAreaView>
   )
 }
 

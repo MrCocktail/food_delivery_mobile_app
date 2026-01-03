@@ -1,11 +1,13 @@
 const dummyData = {
     categories: [
+        { name: "Fritures", description: "Delicious fritures" },
+        { name: "Snacks", description: "Delicious snacks" },
         { name: "Burgers", description: "Juicy grilled burgers" },
         { name: "Pizzas", description: "Oven-baked cheesy pizzas" },
+        { name: "Bowls", description: "Balanced rice and protein bowls" },
         { name: "Burritos", description: "Rolled Mexican delights" },
         { name: "Sandwiches", description: "Stacked and stuffed sandwiches" },
         { name: "Wraps", description: "Rolled up wraps packed with flavor" },
-        { name: "Bowls", description: "Balanced rice and protein bowls" },
     ],
 
     customizations: [
@@ -64,6 +66,58 @@ const dummyData = {
             ],
         },
         {
+            name: "Pâté Kòde",
+            description: "Loaded with meat",
+            image_url:
+                "https://www.vecteezy.com/png/69871442-delicious-golden-brown-empanadas-with-savory-dipping-sauce-garnished-with-fresh-parsley-transparent-background.png",
+            price: 30.49,
+            rating: 4.7,
+            calories: 760,
+            protein: 30,
+            category_name: "Snacks",
+            customizations: [
+                "Extra Cheese",
+                "Coke",
+                "Olives",
+            ],
+        },
+        {
+            name: "Barbecue",
+            description: "Fried chicken with BBQ sauce",
+            image_url:
+                "https://www.vecteezy.com/png/53964537-delicious-bbq-ribs-grilled-meat-food-photography-dinner.png",
+            price: 20.99,
+            rating: 4.2,
+            calories: 480,
+            protein: 18,
+            category_name: "Fritures",
+            customizations: ["Jalapeños", "Iced Tea", "Fries", "Salad"],
+        },
+        {
+            name: "Pica Pollo",
+            description: "Crispy fried chicken pieces",
+            image_url:
+                "https://www.vecteezy.com/png/47756532-fried-chicken-leg-illustration-a-group-of-delicious-chicken-legs-isolated-on-a-transparent-background.png",
+                price: 24.99,
+                rating: 4.1,
+                calories: 480,
+                protein: 18,
+                category_name: "Fritures",
+                customizations: ["Jalapeños", "Iced Tea", "Fries", "Salad"],
+            },
+            {
+                name: "Bouyon",
+                description: "Soup with vegetables and meat",
+                image_url:
+                    "https://www.vecteezy.com/png/54486277-chicken-soup-in-bowl.png",
+                price: 22.99,
+                rating: 4.3,
+                calories: 680,
+                protein: 30,
+                category_name: "Bowls",
+                customizations: ["Jalapeños", "Iced Tea", "Fries", "Salad"],
+            },
+            {
             name: "Bean Burrito",
             description: "Stuffed with beans, rice, salsa",
             image_url:

@@ -7,7 +7,7 @@ import { FlatList, Platform, Text, TouchableOpacity } from 'react-native'
 
 const Filter = ({ categories }: {categories: Category[]}) => {
     const searchParams = useLocalSearchParams()
-    const [isActive, setIsActive] = React.useState(searchParams.category as string || '')
+    const [isActive, setIsActive] = React.useState(searchParams.category as string || 'all')
 
     const handlePress = (id: string) => {
         setIsActive(id)

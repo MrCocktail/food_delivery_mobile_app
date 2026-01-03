@@ -36,10 +36,14 @@ import mozarellaSticks from "@/assets/images/mozarella-sticks.png";
 import mushrooms from "@/assets/images/mushrooms.png";
 import onionRings from "@/assets/images/onion-rings.png";
 import onions from "@/assets/images/onions.png";
-import pizzaOne from "@/assets/images/pizza-one.png";
+import pizzaOne from "@/assets/images/pizza.png";
 import salad from "@/assets/images/salad.png";
 import success from "@/assets/images/success.png";
 import tomatoes from "@/assets/images/tomatoes.png";
+
+import picaPolloHome from "@/assets/images/pica-pollo.png";
+import soupJoumou from "@/assets/images/soup-joumou.png";
+import pateKode from "@/assets/images/pate-kode.png";
 
 export const CATEGORIES = [
     {
@@ -67,13 +71,13 @@ export const CATEGORIES = [
 export const offers = [
     {
         id: 1,
-        title: "SUMMER COMBO",
-        image: burgerOne,
+        title: "PICA POLLO",
+        image: picaPolloHome,
         color: "#D33B0D",
-    },
+    }, 
     {
         id: 2,
-        title: "BURGER BASH",
+        title: "BURGER WEEK",
         image: burgerTwo,
         color: "#DF5A0C",
     },
@@ -88,6 +92,18 @@ export const offers = [
         title: "BURRITO DELIGHT",
         image: buritto,
         color: "#EB920C",
+    },
+    {
+        id: 5,
+        title: "PÂTÉ KÒDE",
+        image: pateKode,
+        color: "#8C3A1A",
+    },
+    {
+        id: 6,
+        title: "SOUP JOUMOU",
+        image: soupJoumou,
+        color: "#6B8E23",
     },
 ];
 
